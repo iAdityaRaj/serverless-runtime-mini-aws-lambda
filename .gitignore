@@ -1,0 +1,28 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+# binaries
+/build/
+# Test binaries
+*.test
+
+# Docker
+docker-data/
+
+# temp
+tmp/
+
+# Output
+*.out
+
+# Go workspace
+go.work
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
