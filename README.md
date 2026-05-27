@@ -9,7 +9,6 @@
 [![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat-square&logo=go&logoColor=white)](https://golang.org)
 [![Docker](https://img.shields.io/badge/Docker-Engine-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
 [![AWS EC2](https://img.shields.io/badge/AWS-EC2-FF9900?style=flat-square&logo=amazonaws&logoColor=white)](https://aws.amazon.com/ec2/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-lightgrey?style=flat-square)]()
 [![Status](https://img.shields.io/badge/Status-Live-brightgreen?style=flat-square)]()
 
@@ -475,15 +474,18 @@ These design choices reflect real production platform engineering concerns:
 
 **Source-Level Function Deployment** — Functions are deployed as raw Go source code, not pre-built images. The platform compiles and containerizes on the host, mirroring how managed FaaS platforms accept source and return a handle — abstracting the build pipeline from the caller entirely.
 
----
+***Warm Starts vs Cold Starts*** - This runtime currently uses a cold-start execution model: every invocation launches a fresh Docker container, executes the function, and destroys the container afterward.
+
+The worker goroutines themselves are warm and persistent, meaning scheduling overhead is minimal, while container startup latency dominates execution time.
 
 
 
 <div align="center">
 
 *Built on the foundations of the Berkeley View on Serverless Computing.*
-*Engineered in Go. Deployed on AWS. Observable by design. * | Aditya Raj (2025AIM1001)
 
-**[GitHub](https://github.com/iAdityaRaj/serverless-runtime-mini-aws-lambda)** · **[Issues](https://github.com/iAdityaRaj/serverless-runtime-mini-aws-lambda/issues)** · **[Live API](http://16.176.26.153:8080/metrics)**
+*Engineered in Go. Deployed on AWS. Observable by design.* | Aditya Raj (2025AIM1001)
+
+
 
 </div>
