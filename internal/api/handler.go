@@ -12,6 +12,7 @@ import (
 
 	"serverless-runtime/internal/metrics"
 	"serverless-runtime/internal/registry"
+	"time"
 )
 
 type InvokeResponse struct {
@@ -68,6 +69,7 @@ func InvokeHandler(
 		FunctionName: functionName,
 		Payload:      body,
 		ResultChan:   resultChan,
+		QueuedAt:     time.Now(),
 	}
 
 	workerPool.JobQueue <- job
